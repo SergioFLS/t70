@@ -1,3 +1,31 @@
-[submodule "3rd-party"]
-	path = 3rd-party
-	url = https://github.com/remi6397/3rd-party
+[submodule "3rd-party/blip-buf"]
+	path = 3rd-party/blip-buf
+	url = https://github.com/nesbox/blip-buf.git
+[submodule "3rd-party/duktape"]
+	path = 3rd-party/duktape
+	url = https://github.com/svaarala/duktape-releases
+	shallow = true
+[submodule "3rd-party/giflib"]
+	path = 3rd-party/giflib
+	url = https://github.com/nesbox/giflib
+[submodule "3rd-party/lpeg"]
+	path = 3rd-party/lpeg
+	url = https://github.com/luvit/lpeg
+[submodule "3rd-party/lua"]
+	path = 3rd-party/lua
+	url = https://github.com/lua/lua
+[submodule "3rd-party/SDL2_net"]
+	path = 3rd-party/SDL2_net
+	url = https://github.com/libsdl-org/SDL_net
+[submodule "3rd-party/SDL2"]
+	path = 3rd-party/SDL2
+	url = https://github.com/libsdl-org/SDL
+[submodule "3rd-party/sdl-gpu"]
+	path = 3rd-party/sdl-gpu
+	url = https://github.com/aliceisjustplaying/sdl-gpu
+[submodule "3rd-party/wren"]
+	path = 3rd-party/wren
+	url = https://github.com/wren-lang/wren
+[submodule "3rd-party/zlib"]
+	path = 3rd-party/zlib
+	url = https://github.com/madler/zlib
