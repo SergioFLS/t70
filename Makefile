@@ -324,7 +324,7 @@ STUDIO_A = bin/libstudio.a
 STUDIO_DLL = bin/studio.dll
 
 $(TIC80_DLL): $(TIC80_O)
-	$(CC) $(OPT) -shared $(TIC80_O) -L$(PRE_BUILT)/mingw -llua -lwren -lgif -Wl,--out-implib,$(TIC80_A) -o $@
+	$(CC) $(OPT) -shared $(TIC80_O) -L$(PRE_BUILT)/mingw -llua -llpeg -lwren -lgif -Wl,--out-implib,$(TIC80_A) -o $@
 
 $(STUDIO_DLL): $(DEMO_ASSETS) $(TIC80_DLL) $(TIC_O) bin/html.o
 	$(CC) $(TIC_O) bin/html.o $(TIC80_A) $(OPT) -shared $(INCLUDES) -L$(PRE_BUILT)/mingw -llua -lz -lgif -Wl,--out-implib,$(STUDIO_A) -o $@
