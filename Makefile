@@ -4,21 +4,21 @@ OPT_PRO=-DTIC80_PRO
 BIN_NAME= bin/tic80
 
 3RD_PARTY = 3rd-party
-DUKTAPE_LIB = $(3RD_PARTY)/duktape-2.2.0/src
+DUKTAPE_LIB = $(3RD_PARTY)/duktape/src
 BLIPBUF_LIB = $(3RD_PARTY)/blip-buf
-SDL_NET_LIB = $(3RD_PARTY)/SDL2_net-2.0.1
+SDL_NET_LIB = $(3RD_PARTY)/SDL2_net/src
 
 PRE_BUILT = $(3RD_PARTY)/pre-built
 
 RM= rm -f
 
 INCLUDES= \
-	-I$(3RD_PARTY)/lua-5.3.1/src \
-	-I$(3RD_PARTY)/zlib-1.2.11 \
-	-I$(3RD_PARTY)/giflib-5.1.4/lib \
-	-I$(3RD_PARTY)/SDL2-2.0.7/include \
+	-I$(3RD_PARTY)/lua \
+	-I$(3RD_PARTY)/zlib \
+	-I$(3RD_PARTY)/giflib \
+	-I$(3RD_PARTY)/SDL2/include \
 	-I$(3RD_PARTY)/sdl-gpu/include \
-	-I$(3RD_PARTY)/wren-0.1.0/src/include \
+	-I$(3RD_PARTY)/wren/src/include \
 	-I$(3RD_PARTY)/moonscript \
 	-I$(3RD_PARTY)/fennel \
 	-I$(BLIPBUF_LIB) \
@@ -158,8 +158,8 @@ SYSTEM=\
 SOURCES_EXT= \
 	src/html.c
 
-LPEG_SRC= $(3RD_PARTY)/lpeg-1.0.1/*.c
-GIF_SRC= $(3RD_PARTY)/giflib-5.1.4/lib/*.c
+LPEG_SRC= $(3RD_PARTY)/lpeg/*.c
+GIF_SRC= $(3RD_PARTY)/giflib/*.c
 BLIP_SRC= $(BLIPBUF_LIB)/blip_buf.c
 
 DEMO_ASSETS= \
