@@ -26,6 +26,12 @@ Run `make liblua.a MYCFLAGS="-std=c99 -DLUA_COMPAT_5_2" MYLDFLAGS="" MYLIBS=""`
 
 Your library should be on `liblua.a`
 
+## lpeg
+* `make LUADIR=../lua lpvm.o lpcap.o lptree.o lpcode.o lpprint.o lpcset.o`
+* `ar rcu liblpeg.a *.o`
+
+Your library should be on `liblpeg.a`
+
 ## zlib
 Run `make -f win32/Makefile.gcc`
 
