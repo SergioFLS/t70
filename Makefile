@@ -17,6 +17,7 @@ INCLUDES= \
 	-I$(3RD_PARTY)/zlib \
 	-I$(3RD_PARTY)/giflib \
 	-I$(3RD_PARTY)/SDL2/include \
+	-I$(3RD_PARTY)/SDL2_net/include \
 	-I$(3RD_PARTY)/sdl-gpu/include \
 	-I$(3RD_PARTY)/wren/src/include \
 	-I$(3RD_PARTY)/moonscript \
@@ -31,7 +32,8 @@ MINGW_LINKER_FLAGS= \
 	-lmingw32 \
 	-lcomdlg32 \
 	-lws2_32 \
-	-lsdlgpu \
+	-liphlpapi \
+	-lSDL2_gpu_s \
 	-lSDL2main \
 	-lSDL2 \
 	-lopengl32 \
