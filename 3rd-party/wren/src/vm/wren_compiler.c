@@ -398,7 +398,7 @@ static void printError(Parser* parser, int line, const char* label,
   if (parser->vm->config.errorFn == NULL) return;
   
   // Format the label and message.
-  char message[ERROR_MESSAGE_SIZE];
+  char message[10 + MAX_VARIABLE_NAME + 4 + 1];
   int length = sprintf(message, "%s: ", label);
   length += vsprintf(message + length, format, args);
   ASSERT(length < ERROR_MESSAGE_SIZE, "Error should not exceed buffer.");
