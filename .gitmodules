@@ -23,9 +23,6 @@
 [submodule "3rd-party/sdl-gpu"]
 	path = 3rd-party/sdl-gpu
 	url = https://github.com/aliceisjustplaying/sdl-gpu
-[submodule "3rd-party/wren"]
-	path = 3rd-party/wren
-	url = https://github.com/wren-lang/wren
 [submodule "3rd-party/zlib"]
 	path = 3rd-party/zlib
 	url = https://github.com/madler/zlib
