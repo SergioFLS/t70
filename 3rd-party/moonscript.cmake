@@ -1,0 +1,1 @@
+set(MOONSCRIPT_DIR ${THIRDPARTY_DIR}/moonscript)

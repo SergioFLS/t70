@@ -1,0 +1,1 @@
+set(FENNEL_DIR ${THIRDPARTY_DIR}/fennel)
