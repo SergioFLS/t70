@@ -7,6 +7,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 
 set(THIRDPARTY_DIR ${CMAKE_SOURCE_DIR}/3rd-party)
 
+# third-party stuff
 add_library(blipbuf STATIC ${THIRDPARTY_DIR}/blip-buf/blip_buf.c)
 target_include_directories(blipbuf INTERFACE ${THIRDPARTY_DIR}/blip-buf)
 
@@ -19,10 +20,55 @@ include(${THIRDPARTY_DIR}/lpeg.cmake)
 include(${THIRDPARTY_DIR}/moonscript.cmake)
 include(${THIRDPARTY_DIR}/fennel.cmake)
 
-add_library(t70_core STATIC src/tic80.c src/tic.c src/jsapi.c src/luaapi.c src/wrenapi.c)
-target_include_directories(t70_core PUBLIC include)
-target_include_directories(t70_core PRIVATE ${MOONSCRIPT_DIR} ${FENNEL_DIR})
-target_link_libraries(t70_core PRIVATE blipbuf duktape lua lpeg wren)
+add_library(t70_o STATIC src/tic80.c src/tic.c src/jsapi.c src/luaapi.c src/wrenapi.c)
+target_include_directories(t70_o PUBLIC include)
+target_include_directories(t70_o PRIVATE ${MOONSCRIPT_DIR} ${FENNEL_DIR})
+target_link_libraries(t70_o PRIVATE blipbuf duktape lua lpeg wren)
 
-add_executable(t70 src/system.c)
-target_link_libraries(t70 PRIVATE t70_core)
+## studio
+include(${THIRDPARTY_DIR}/giflib.cmake)
+
+add_library(t70_studio STATIC
+	src/studio.c
+	src/console.c
+	src/run.c
+	src/ext/md5.c
+	src/ext/gif.c
+	src/fs.c
+	src/tools.c
+	src/start.c
+	src/sprite.c
+	src/map.c
+	src/sfx.c
+	src/music.c
+	src/history.c
+	src/world.c
+	src/config.c
+	src/code.c
+	src/dialog.c
+	src/menu.c
+	src/surf.c
+	src/html.c
+)
+target_include_directories(t70_studio PUBLIC include)
+
+set(ZLIB_BUILD_TESTING OFF)
+set(ZLIB_BUILD_SHARED OFF)
+set(ZLIB_BUILD_STATIC ON)
+set(ZLIB_INSTALL OFF)
+add_subdirectory(${THIRDPARTY_DIR}/zlib EXCLUDE_FROM_ALL)
+
+target_link_libraries(t70_studio PRIVATE lua giflib zlibstatic t70_o)
+
+## system
+
+set(SDL_SHARED OFF)
+set(SDL_STATIC ON)
+add_subdirectory(${THIRDPARTY_DIR}/SDL2 EXCLUDE_FROM_ALL)
+
+set(BUILD_SHARED_LIBS OFF)
+add_subdirectory(${THIRDPARTY_DIR}/SDL2_net EXCLUDE_FROM_ALL)
+
+include(${THIRDPARTY_DIR}/sdl-gpu.cmake)
+add_executable(t70 src/system.c src/net.c src/ext/file_dialog.c)
+target_link_libraries(t70 PRIVATE t70_studio SDL2::SDL2-static SDL2::SDL2main SDL2_net::SDL2_net-static sdlgpu)
