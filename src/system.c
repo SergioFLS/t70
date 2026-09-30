@@ -1105,7 +1105,7 @@ static const char* getAppFolder()
 
 		strcpy(appFolder, "/" TIC_PACKAGE "/" TIC_NAME "/");
 
-#elif defined(__ANDROID__)
+#elif defined(__ANDROID__) && !defined(__TERMUX__)
 
 		strcpy(appFolder, SDL_AndroidGetExternalStoragePath());
 		const char AppFolder[] = "/" TIC_NAME "/";

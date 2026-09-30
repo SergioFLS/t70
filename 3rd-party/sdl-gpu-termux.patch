@@ -1,0 +1,35 @@
+diff --git a/src/SDL_gpu.c b/src/SDL_gpu.c
+index 6342171..50785cd 100644
+--- a/src/SDL_gpu.c
++++ b/src/SDL_gpu.c
+@@ -6,7 +6,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
+-#ifdef __ANDROID__
++#if  defined(__ANDROID__) && !defined(__TERMUX__)
+ #include <android/log.h>
+ #endif
+ 
+@@ -133,7 +133,7 @@ int gpu_default_print(GPU_LogLevelEnum log_level, const char* format, va_list ar
+ {
+     switch(log_level)
+     {
+-#ifdef __ANDROID__
++#if defined(__ANDROID__) && !defined(__TERMUX__)
+     case GPU_LOG_INFO:
+         return __android_log_vprint((GPU_GetDebugLevel() >= GPU_DEBUG_LEVEL_3? ANDROID_LOG_ERROR : ANDROID_LOG_INFO), "APPLICATION", format, args);
+     case GPU_LOG_WARNING:
+diff --git a/src/renderer_GL_common.inl b/src/renderer_GL_common.inl
+index 5462d43..9f1f308 100644
+--- a/src/renderer_GL_common.inl
++++ b/src/renderer_GL_common.inl
+@@ -1322,7 +1322,7 @@ static GPU_Target* Init(GPU_Renderer* renderer, GPU_RendererID renderer_request,
+     if(window == NULL)
+     {
+         int win_w, win_h;
+-        #ifdef __ANDROID__
++        #if defined(__ANDROID__) && !defined(__TERMUX__)
+         win_w = win_h = 0;  // Force Android to create full screen window
+         #else
+         win_w = w;
