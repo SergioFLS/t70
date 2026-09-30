@@ -62,13 +62,30 @@ target_link_libraries(t70_studio PRIVATE lua giflib zlibstatic t70_o)
 
 ## system
 
-set(SDL_SHARED OFF)
-set(SDL_STATIC ON)
-add_subdirectory(${THIRDPARTY_DIR}/SDL2 EXCLUDE_FROM_ALL)
+add_executable(t70 src/system.c src/net.c src/ext/file_dialog.c)
+target_link_libraries(t70 PRIVATE t70_studio)
+
+find_package(SDL2)
+if(SDL2_FOUND)
+	target_link_libraries(t70 PRIVATE SDL2::SDL2)
+else()
+	set(SDL_SHARED OFF)
+	set(SDL_STATIC ON)
+	add_subdirectory(${THIRDPARTY_DIR}/SDL2 EXCLUDE_FROM_ALL)
+	target_link_libraries(t70 PRIVATE SDL2::SDL2-static)
+endif()
+if(WIN32)
+	target_link_libraries(t70 PRIVATE SDL2::SDL2main)
+endif()
 
 set(BUILD_SHARED_LIBS OFF)
 add_subdirectory(${THIRDPARTY_DIR}/SDL2_net EXCLUDE_FROM_ALL)
 
 include(${THIRDPARTY_DIR}/sdl-gpu.cmake)
-add_executable(t70 src/system.c src/net.c src/ext/file_dialog.c)
-target_link_libraries(t70 PRIVATE t70_studio SDL2::SDL2-static SDL2::SDL2main SDL2_net::SDL2_net-static sdlgpu)
+
+if(UNIX)
+	find_package(PkgConfig REQUIRED)
+	pkg_check_modules(GTK3 REQUIRED IMPORTED_TARGET gtk+-3.0)
+	target_link_libraries(t70 PRIVATE PkgConfig::GTK3 m)
+endif()
+target_link_libraries(t70 PRIVATE SDL2_net::SDL2_net-static sdlgpu)

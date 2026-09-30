@@ -32,6 +32,12 @@ target_include_directories(sdlgpu PRIVATE ${THIRDPARTY_DIR}/sdl-gpu/src/external
 
 if(WIN32)
 	target_link_libraries(sdlgpu opengl32)
+else()
+	target_link_libraries(sdlgpu GL)
 endif()
 
-target_link_libraries(sdlgpu SDL2::SDL2-static)
+if(SDL2_FOUND)
+	target_link_libraries(sdlgpu SDL2::SDL2)
+else()
+	target_link_libraries(sdlgpu SDL2::SDL2-static)
+endif()
