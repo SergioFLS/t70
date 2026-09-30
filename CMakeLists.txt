@@ -5,6 +5,8 @@ project(T70 VERSION 0.70.6 LANGUAGES C)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+option(T70_PRO "Build as the Pro version" ON)
+
 set(THIRDPARTY_DIR ${CMAKE_SOURCE_DIR}/3rd-party)
 
 # third-party stuff
@@ -89,3 +91,8 @@ if(UNIX)
 	target_link_libraries(t70 PRIVATE PkgConfig::GTK3 m)
 endif()
 target_link_libraries(t70 PRIVATE SDL2_net::SDL2_net-static sdlgpu)
+
+# enabling pro version
+if(T70_PRO)
+	target_compile_definitions(t70_o PUBLIC TIC80_PRO)
+endif()
