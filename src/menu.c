@@ -33,7 +33,7 @@ static const char* Rows[] =
 	"GAMEPAD CONFIG",
 	"",
 	"CLOSE GAME",
-	"QUIT TIC-80",
+	("QUIT "TIC_NAME),
 };
 
 static void resumeGame(Menu* menu)
