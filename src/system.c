@@ -1021,6 +1021,7 @@ static void blitCursor(const u8* in)
 	SDL_Rect rect = {0, 0, 0, 0};
 	calcTextureRect(&rect);
 	s32 scale = rect.w / TIC80_WIDTH;
+	if (scale < 1) scale = 1;
 
 	s32 mx, my;
 	SDL_GetMouseState(&mx, &my);
@@ -1455,7 +1456,11 @@ static s32 start(s32 argc, char **argv, const char* folder)
 
 	platform.window = SDL_CreateWindow( TIC_TITLE, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 		Width, Height, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE| SDL_WINDOW_OPENGL);
-
+	
+	if (!platform.window)
+	{
+		SDL_Log("WARNING: Failed to create window: %s", SDL_GetError());
+	}
 	setWindowIcon();
 
 	GPU_SetInitWindow(SDL_GetWindowID(platform.window));
