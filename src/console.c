@@ -1379,7 +1379,7 @@ static void onConsoleFolderCommand(Console* console, const char* param)
 
 #endif
 
-static void onConsoleClsCommand(Console* console, const char* param)
+static void onConsoleClearCommand(Console* console, const char* param)
 {
 	memset(console->buffer, 0, CONSOLE_BUFFER_SIZE);
 	memset(console->colorBuffer, TIC_COLOR_BG, CONSOLE_BUFFER_SIZE);
@@ -2468,7 +2468,7 @@ static const struct
 	{"export",	NULL, "export html or native game",	onConsoleExportCommand},
 	{"import",	NULL, "import sprites from .gif",	onConsoleImportCommand},
 	{"del",		NULL, "delete file or dir",			onConsoleDelCommand},
-	{"cls",		NULL, "clear screen",				onConsoleClsCommand},
+	{"clear",		"cls", "clear screen",				onConsoleClearCommand},
 	{"demo",	NULL, "install demo carts",			onConsoleInstallDemosCommand},
 	{"config",	NULL, "edit "TIC_NAME" config",			onConsoleConfigCommand},
 	{"version",	NULL, "show the current version",	onConsoleVersionCommand},
