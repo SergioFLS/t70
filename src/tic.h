@@ -45,11 +45,11 @@
 
 #define TIC_VERSION_LABEL DEF2STR(TIC_VERSION_MAJOR) "." DEF2STR(TIC_VERSION_MINOR) "." DEF2STR(TIC_VERSION_PATCH) TIC_VERSION_STATUS TIC_VERSION_POST
 #define TIC_PACKAGE "com.nesbox.tic"
-#define TIC_NAME "TIC-80"
-#define TIC_NAME_FULL TIC_NAME " tiny computer"
-#define TIC_TITLE TIC_NAME_FULL " " TIC_VERSION_LABEL
-#define TIC_HOST "tic.computer"
-#define TIC_COPYRIGHT "http://" TIC_HOST " (C) 2017"
+#define TIC_NAME "T70"
+#define TIC_NAME_FULL TIC_NAME " (TIC-80 fork)"
+#define TIC_TITLE TIC_NAME " " TIC_VERSION_LABEL
+#define TIC_HOST "127.0.0.1" // TODO: don't hardcode host
+#define TIC_COPYRIGHT "github.com/SergioFLS/t70 (C) 2017, 2026"
 
 #define TIC_VRAM_SIZE (16*1024) //16K
 #define TIC_RAM_SIZE (80*1024) //80K

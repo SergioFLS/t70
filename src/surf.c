@@ -190,7 +190,7 @@ static void drawTopToolbar(Surf* surf, s32 x, s32 y)
 	{
 		char label[FILENAME_MAX];
 
-		sprintf(label, "%s", "TIC-80 SURF");
+		sprintf(label, "%s", TIC_NAME" SURF");
 
 		s32 xl = x + MAIN_OFFSET;
 		s32 yl = y + (Height - TIC_FONT_HEIGHT)/2;

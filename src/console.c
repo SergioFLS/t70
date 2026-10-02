@@ -2470,7 +2470,7 @@ static const struct
 	{"del",		NULL, "delete file or dir",			onConsoleDelCommand},
 	{"cls",		NULL, "clear screen",				onConsoleClsCommand},
 	{"demo",	NULL, "install demo carts",			onConsoleInstallDemosCommand},
-	{"config",	NULL, "edit TIC config",			onConsoleConfigCommand},
+	{"config",	NULL, "edit "TIC_NAME" config",			onConsoleConfigCommand},
 	{"version",	NULL, "show the current version",	onConsoleVersionCommand},
 	{"edit",	NULL, "open cart editor",			onConsoleCodeCommand},
 	{"surf",	NULL, "open carts browser",			onConsoleSurfCommand},
