@@ -2438,7 +2438,7 @@ static const struct
 	{"run",		NULL, "run loaded cart",			onConsoleRunCommand},
 	{"resume",	NULL, "resume run cart",			onConsoleResumeCommand},
 	{"eval",	"=",  "run code",					onConsoleEvalCommand},
-	{"dir",		"ls", "show list of files", 		onConsoleDirCommand},
+	{"dir",	"ls", "show list of files", 		onConsoleDirCommand},
 	{"cd",		NULL, "change directory", 			onConsoleChangeDirectory},
 	{"mkdir",	NULL, "make directory", 			onConsoleMakeDirectory},
 #if defined(CAN_EXPORT)
@@ -2446,15 +2446,15 @@ static const struct
 #endif
 	{"add",		NULL, "add file", 					onConsoleAddCommand},
 	{"get",		NULL, "download file", 				onConsoleGetCommand},
-	{"export",	NULL, "export html or native game",	onConsoleExportCommand},
-	{"import",	NULL, "import sprites from .gif",	onConsoleImportCommand},
-	{"del",		NULL, "delete file or dir",			onConsoleDelCommand},
+	{"export",		NULL, "export html or native game",	onConsoleExportCommand},
+	{"import",		NULL, "import sprites from .gif",	onConsoleImportCommand},
+	{"del",		"rm", "delete file or dir",			onConsoleDelCommand},
 	{"clear",		"cls", "clear screen",				onConsoleClearCommand},
-	{"demo",	NULL, "install demo carts",			onConsoleInstallDemosCommand},
-	{"config",	NULL, "edit "TIC_NAME" config",			onConsoleConfigCommand},
+	{"demo",		NULL, "install demo carts",			onConsoleInstallDemosCommand},
+	{"config",		NULL, "edit "TIC_NAME" config",			onConsoleConfigCommand},
 	{"version",	NULL, "show the current version",	onConsoleVersionCommand},
-	{"edit",	NULL, "open cart editor",			onConsoleCodeCommand},
-	{"surf",	NULL, "open carts browser",			onConsoleSurfCommand},
+	{"edit",		NULL, "open cart editor",			onConsoleCodeCommand},
+	{"surf",		NULL, "open carts browser",			onConsoleSurfCommand},
 };
 
 static bool predictFilename(const char* name, const char* info, s32 id, void* data, bool dir)
