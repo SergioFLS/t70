@@ -4,6 +4,10 @@
 *.suo
 sexit
 .vscode/
+*.o
+*.obj
+out*/
+compile_commands.json
 build/uwp/tic/Debug/
 build/uwp/tic/Release/
 build/uwp/tic/x64/
