@@ -1072,10 +1072,14 @@ static void updateMDate()
 
 static void updateTitle()
 {
+	tic_mem* tic = impl.studio.tic;
+	const char* title = tic->api.read_metatag(tic, "title");
 	char name[FILENAME_MAX] = TIC_TITLE;
 
-	if(strlen(impl.console->romName))
-		sprintf(name, "%s [%s]", TIC_TITLE, impl.console->romName);
+	if(title && strlen(title))
+		snprintf(name, sizeof(name), "%s [%s]", TIC_TITLE, title);
+	else if (strlen(impl.console->romName))
+		snprintf(name, sizeof(name), "%s [%s]", TIC_TITLE, impl.console->romName);
 
 	impl.system->setWindowTitle(name);
 }

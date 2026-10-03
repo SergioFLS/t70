@@ -149,6 +149,7 @@ typedef struct
 	void (*blit)				(tic_mem* tic, tic_scanline scanline, tic_overline overline, void* data);
 
 	const tic_script_config* (*get_script_config)(tic_mem* memory);
+	const char* (*read_metatag)(tic_mem* memory, const char* tag);
 } tic_api;
 
 struct tic_mem

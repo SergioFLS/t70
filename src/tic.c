@@ -1583,6 +1583,11 @@ static const tic_script_config* api_get_script_config(tic_mem* memory)
 	return getScriptConfig(memory->cart.bank0.code.data);
 }
 
+static const char* api_read_metatag(tic_mem* tic, const char* tag)
+{
+	return readMetatag(tic->cart.bank0.code.data, tag, api_get_script_config(tic)->singleComment);
+}
+
 static void updateSaveid(tic_mem* memory)
 {
 	memset(memory->saveid, 0, sizeof memory->saveid);
@@ -1997,6 +2002,7 @@ static void initApi(tic_api* api)
 	INIT_API(blit);
 
 	INIT_API(get_script_config);
+	INIT_API(read_metatag);
 
 #undef INIT_API
 }
